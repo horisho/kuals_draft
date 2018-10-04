@@ -21,6 +21,9 @@ gem 'bootstrap-sass'
 # dropdown-menuに必要
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+# paginate
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
