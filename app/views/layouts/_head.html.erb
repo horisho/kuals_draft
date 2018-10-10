@@ -1,5 +1,7 @@
 <head>
-  <title>KualsDraft</title>
+  <title>
+    <%= titling(yield(:title)) %>
+  </title>
   <%=  csrf_meta_tags %>         
   <%=  csp_meta_tag %>  
   <%=  stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-tr    ack': 'reload' %>               
