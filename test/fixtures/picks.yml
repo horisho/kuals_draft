@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  round: 1
+  title: MyString
+  name: MyString
+  remark: MyText
+
+two:
+  round: 1
+  title: MyString
+  name: MyString
+  remark: MyText

@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_02_030740) do
+ActiveRecord::Schema.define(version: 2018_10_16_075808) do
+
+  create_table "picks", force: :cascade do |t|
+    t.integer "round"
+    t.string "title"
+    t.string "name"
+    t.text "remark"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_picks_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_picks_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
