@@ -1,0 +1,12 @@
+<li id="pick-<%= pick.id %>">
+  <span class="user"><%= link_to pick.user.name, pick.user %></span>
+  <span class="round"><%= link_to pick.round.to_s + "位指名", '#' %></span>
+  <span class="title"><%= pick.title %></span>
+  <span class="name"><%= pick.name %></span>
+  <span class="remark"><%= pick.remark %></span>
+  <span class="delete">
+    <% if current_user?(pick.user) %>
+      <%= link_to "delete", pick, method: :delete, data: { confirm: "本当に消すにょ？ " } %>
+    <% end %>
+  </span>
+</li>

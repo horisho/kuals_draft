@@ -1,5 +1,7 @@
 user1:
   name: alpha
+  admin: true
 
 user2:
   name: beta
+  admin: false

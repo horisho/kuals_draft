@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_16_075808) do
+ActiveRecord::Schema.define(version: 2018_10_23_021945) do
 
   create_table "picks", force: :cascade do |t|
     t.integer "round"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2018_10_16_075808) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.boolean "admin", default: false
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 

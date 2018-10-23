@@ -1,7 +1,7 @@
 <div class="jumbotron">
   <h1>KUALS ドラフト</h1>
   <% if logged_in? %>
-    <%= link_to "指名する", '#', class: "btn btn-primary" %>
+    <%= link_to "指名する", draft_path, class: "btn btn-primary" %>
   <% else %>
     <%= link_to "新規", signup_path, class: "btn btn-primary" %>
     <%= link_to "ログイン", login_path, class: "btn btn-success" %>

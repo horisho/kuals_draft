@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:destroy]
+  before_action :admin_user, only: [:destroy]
   
   def new
     @user = User.new
@@ -7,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @picks = @user.picks.paginate(page: params[:page])
   end
 
   def index
@@ -16,7 +18,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "登録完了しました"
+      flash[:success] = "登録完了だにょ"
       redirect_to root_url
     else
       render 'new'
@@ -25,7 +27,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "ユーザーを削除しました"
+    flash[:success] = "ユーザーを削除したにょ"
     redirect_to users_url
   end
 
