@@ -5,4 +5,10 @@ class Pick < ApplicationRecord
   validates :title, presence: :true, length: { maximum: 30 }
   validates :name, presence: :true, length: { maximum: 15 }
   validates :remark, length: { maximum: 200 }
+
+  class << self
+    def retrieval(n)
+      Pick.where("round = #{n}")
+    end
+  end
 end

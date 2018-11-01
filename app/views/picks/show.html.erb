@@ -1,0 +1,15 @@
+<% provide(:title, "#{@pick.user.name}の指名") %>
+<script src="test2.js"></script>
+<div>
+  <aside class="col-md-4">
+    <% @picks.each do |p| %>
+      <li><%= link_to p.user.name, p %></li>
+    <% end %>
+  </aside>
+  <div class="col-md-8 jumbotron">
+    <p style="font-size: 40px"><%= @pick.user.name %></p>
+    <p style="float: right"><%= "第#{@pick.round}巡指名" %></p>
+    <button onclick="reveal()">表示</button>
+    <div id="content" class="hidden well"><%= render 'picks/content' %></p>
+  </div>
+</div>

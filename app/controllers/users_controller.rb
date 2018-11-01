@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:destroy]
+  before_action :logged_in_user, only: [:destroy, :show]
   before_action :admin_user, only: [:destroy]
   
   def new

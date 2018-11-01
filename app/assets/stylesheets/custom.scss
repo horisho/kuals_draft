@@ -58,6 +58,10 @@ h2 {
     color: $gray-light;
   }
 
+h3 {
+    text-align: center;
+  }
+
 p {
     font-size: 1.1em;
     line-height: 1.7em;
@@ -258,7 +262,7 @@ label {
         margin-top: 5em;
         padding-top: 0;
       }
-    .title, .name{
+    .content{
         display: block;
         margin-left: 60px;
         img {

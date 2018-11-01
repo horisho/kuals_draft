@@ -1,6 +1,6 @@
 class PicksController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
-  before_action :admin_user, only: [:destroy]
+  before_action :logged_in_user, only: [:index, :create, :destroy]
+  before_action :admin_user, only: [:index, :destroy]
 
   def new
     @pick = Pick.new
@@ -23,7 +23,19 @@ class PicksController < ApplicationController
   end
 
   def index
-    @picks = Pick.find_by(round: params[:id])
+    @picks = Pick.all.paginate(page: params[:page])
+  end
+
+  def retrieval
+    number = params[:draft][:number]
+    @picks = Pick.retrieval(number).paginate(page: params[:page])
+    render 'index'
+  end
+
+  def show
+    @pick = Pick.find(params[:id])
+    num = @pick.round
+    @picks = Pick.retrieval(num)
   end
 
   private 

@@ -20,4 +20,9 @@ class PickTest < ActiveSupport::TestCase
       pick0.save
     end
   end
+
+  test "retrieval picks" do
+    picks = Pick.retrieval(2)
+    assert picks.count == 1
+  end
 end
