@@ -4,3 +4,5 @@
 <p><%= "ここは#{ @user.name }のユーザーページです" %></p>
 
 <ol class="picks"><%= render 'users/mypicks' if current_user?(@user) || current_user.admin? %></ol>
+
+<%= link_to "指名する", draft_path, class: 'btn btn-primary' %>
