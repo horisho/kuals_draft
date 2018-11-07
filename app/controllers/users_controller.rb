@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @picks = @user.picks.paginate(page: params[:page])
+    @picks = @user.picks.order(:round)
   end
 
   def index

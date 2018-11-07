@@ -1,13 +1,7 @@
 <li id="pick-<%= pick.id %>">
-  <span class="user"><%= link_to "#{pick.user.name}(#{pick.round})", pick.user %></span>
-  <span class="content">
-    <b><%= pick.name %></b>
-    <%= pick.title %>
-    <%= pick.remark %>
-  </span>
-  <span class="delete small">
-    <% if current_user.admin? %>
-      <%= link_to "delete", pick, method: :delete, data: { confirm: "本当に消すにょ？ " } %>
-    <% end %>
-  </span>
+  <%  if pick.lost %>
+    <%= render partial: 'lost_pick', locals: { pick: pick } %>
+  <% else %>
+    <%= render partial: 'right_pick', locals: {  pick: pick } %>
+  <% end %>
 </li>

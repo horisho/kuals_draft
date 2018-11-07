@@ -1,8 +1,10 @@
 <% @picks.each do |p| %>
+  <% if p.lost? %><del style="color: silver;"><% end %>
   <li>
     <ul><%= p.round %>位指名</ul>
     <h1><%= p.name %></h1>
     <h2><%= p.title %></h2>
     <p><%= p.remark %></p>
   </li>
+  <% if p.lost? %></del><% end %>
 <% end %>

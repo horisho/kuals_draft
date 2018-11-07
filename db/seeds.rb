@@ -12,6 +12,8 @@ end
 users = User.order(:created_at).take(6)
 6.times do |n|
   users.each do |user|
-    user.picks.create!(round: n+1, title: "title", name: "name#{n+1}")
+    user.picks.create!(round: n+1, title: "title", name: "name#{n+1}", remark: "alphabetagumma")
   end
 end
+
+User.second.picks.first.discard

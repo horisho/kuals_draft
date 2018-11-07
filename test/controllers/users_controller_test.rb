@@ -27,5 +27,4 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get users_path
     assert_template 'users/index'
   end
-
 end

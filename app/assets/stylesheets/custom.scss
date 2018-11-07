@@ -55,7 +55,6 @@ h2 {
     margin-bottom: 30px;
     text-align: center;
     font-weight: normal;
-    color: $gray-light;
   }
 
 h3 {
@@ -270,10 +269,11 @@ label {
             padding: 5px 0;
           }
       }
-    .timestamp, , .likes, .delete {
+    .delete {
         color: $gray-light;
         display: block;
         margin-left: 60px;
+        text-align: right;
       }
     .gravatar {
         float: left;

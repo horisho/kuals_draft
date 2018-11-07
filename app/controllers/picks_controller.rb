@@ -1,6 +1,6 @@
 class PicksController < ApplicationController
-  before_action :logged_in_user, only: [:index, :create, :destroy]
-  before_action :admin_user, only: [:index, :destroy]
+  before_action :logged_in_user
+  before_action :admin_user, only: [:index, :show, :destroy, :discard]
 
   def new
     @pick = Pick.new
@@ -17,13 +17,13 @@ class PicksController < ApplicationController
   end
 
   def destroy
-    current_user.picks.find_by(id: params[:id]).destroy
+    Pick.find_by(id: params[:id]).destroy
     flash[:success] = "指名を削除したにょ"
     redirect_back(fallback_location: root_url)
   end
 
   def index
-    @picks = Pick.all.paginate(page: params[:page])
+    @picks = Pick.all.order(:round).paginate(page: params[:page])
   end
 
   def retrieval
@@ -35,7 +35,12 @@ class PicksController < ApplicationController
   def show
     @pick = Pick.find(params[:id])
     num = @pick.round
-    @picks = Pick.retrieval(num)
+    @picks = Pick.retrieval(num).where('lost = ?', false)
+  end
+
+  def discard
+    Pick.find(params[:id]).discard
+    redirect_to picks_path
   end
 
   private 

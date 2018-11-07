@@ -3,7 +3,6 @@
     <%= link_to "KUALSドラフト", root_path, id: 'logo' %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "参加者一覧", users_path %></li>
         <li></li>
         <% if logged_in? %>
           <li class="dropdown">
@@ -13,16 +12,17 @@
             <ul class="dropdown-menu">
               <li><%= link_to "指名する", draft_path %></li>
               <li><%= link_to "これまでの指名", user_path(current_user) %></li>
-              <li><%= link_to "3位指名", '#' %></li>
-              <li><%= link_to "4位指名", '#' %></li>
-              <li><%= link_to "5位指名", '#' %></li>
-              <li><%= link_to "6位指名", '#' %></li>
+              <li><%= link_to "参加者一覧", users_path %></li>
+              <% if current_user.admin? %>
+                <li><%= link_to "指名一覧", picks_path %></li>
+              <% end %>
               <li class="divider"></li>
               <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
             </ul>
           </li>
         <% else %>
-          <%= link_to "ログイン", login_path %>
+          <li><%= link_to "参加者一覧", users_path %></li>
+          <li><%= link_to "ログイン", login_path %></li>
         <% end %>
       </ul>
     </nav>

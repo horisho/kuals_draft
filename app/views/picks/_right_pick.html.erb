@@ -1,0 +1,12 @@
+<span class="user"><%=  link_to "#{ pick.user.name}の#{ pick.round}位指名", pick.user %></span>
+<span>
+  <b><%= pick.name %></b>
+  <%= pick.title %>
+  <%= pick.remark %>
+</span>
+<span class="delete small">
+  <% if current_user.admin? %>
+    <ul><%= link_to "discard", discard_pick_path(pick), data: { confirm: "本当に無効にするのかにょ？ " } %></ul>
+    <ul><%= link_to "delete", pick, method: :delete, data: { confirm: "本当に消すのかにょ？ " } %></ul>
+  <% end %>
+</span>
