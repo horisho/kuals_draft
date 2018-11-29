@@ -1,6 +1,6 @@
 class PicksController < ApplicationController
   before_action :logged_in_user
-  before_action :admin_user, only: [:index, :show, :destroy, :discard]
+  before_action :admin_user, only: [:index, :show, :destroy, :discard, :retrieval]
 
   def new
     @pick = Pick.new
@@ -28,8 +28,7 @@ class PicksController < ApplicationController
 
   def retrieval
     number = params[:draft][:number]
-    @picks = Pick.retrieval(number).paginate(page: params[:page])
-    render 'index'
+    @picks = Pick.retrieval(number).paginate(page: params[:page], per_page: 60)
   end
 
   def show

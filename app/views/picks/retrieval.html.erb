@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-3">
+    <%=  form_for(:draft, url: retrieval_path) do |f| %>
+      <%=  f.label :指名順位 %>
+      <%=  f.select :number, [1,2,3,4,5,6], class: 'form-control' %>     
+      <%=  f.submit "一覧を見る", class: 'btn' %> 
+    <%  end %>
+  </div>  
+  <table border="2" class="col-md-9">
+    <tr><th>指名した人</th><th>キャラクター名</th><th>無効化</th><th>削除</th></tr>
+    <% @picks.each do |p| %>
+      <tr>
+        <td><%= p.user.name %></td>
+        <td><%= p.name %></td>
+        <td><%= link_to "discard", discard_pick_path(p), data: {  confirm: "本当に無効にするのかにょ？ " } unless p.lost %></td>
+        <td><%= link_to "delete", p, method: :delete, data: {  confirm: "本当に消すのかにょ？ " } if current_user.admin? %></td>
+      </tr>
+    <% end %>
+    <tr></tr>
+  </table>
+  <%= link_to "戻る", picks_path %>
+</div>
