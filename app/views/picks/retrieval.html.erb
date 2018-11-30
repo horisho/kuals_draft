@@ -12,11 +12,18 @@
       <tr>
         <td><%= p.user.name %></td>
         <td><%= p.name %></td>
-        <td><%= link_to "discard", discard_pick_path(p), data: {  confirm: "本当に無効にするのかにょ？ " } unless p.lost %></td>
-        <td><%= link_to "delete", p, method: :delete, data: {  confirm: "本当に消すのかにょ？ " } if current_user.admin? %></td>
+        <td>
+          <% if p.lost? %>
+            <%= "(ハズレ)" %>
+          <% else %>
+            <%= link_to "discard", discard_pick_path(p), data: {  confirm: "本当に無効にするのかにょ？ " } %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to "delete", p, method: :delete, data: {  confirm: "本当に消すのかにょ？ " } if current_user.admin? %>
+        </td>
       </tr>
     <% end %>
-    <tr></tr>
   </table>
   <%= link_to "戻る", picks_path %>
 </div>
